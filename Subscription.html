@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Prices</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        body {
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1a2e 100%);
+            color: #fff;
+        }
+
+        /* Navbar Animations */
+        .navbar {
+            animation: slideDown 0.6s ease-out;
+            background: linear-gradient(135deg, rgba(13,20,50,0.95) 0%, rgba(10,14,39,0.95) 100%) !important;
+            border-bottom: 2px solid rgba(13,110,253,0.3);
+            box-shadow: 0 5px 20px rgba(13,110,253,0.1);
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #0d6efd, #00bfff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-style: italic;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand:hover {
+            transform: scale(1.05);
+            text-shadow: 0 0 20px rgba(13,110,253,0.5);
+        }
+
+        .navbar-nav .nav-link {
+            color: #b0b0b0 !important;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 10px 15px !important;
+            border-radius: 8px;
+            margin: 0 5px;
+        }
+
+        .navbar-nav .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #0d6efd, #00bfff);
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #00bfff !important;
+            background: rgba(13,110,253,0.1);
+            transform: translateY(-2px);
+        }
+
+        .navbar-nav .nav-link:hover::before {
+            width: 100%;
+        }
+
+        .navbar-nav .nav-link.active {
+            color: #0d6efd !important;
+            background: rgba(13,110,253,0.15);
+        }
+
+        .navbar-toggler {
+            border: 2px solid #0d6efd;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: 0 0 15px rgba(13,110,253,0.5);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Pricing Section */
+        .pricing-section {
+            padding: 60px 20px;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        .pricing-header {
+            animation: fadeInScale 0.8s ease-out;
+            margin-bottom: 50px;
+        }
+
+        .pricing-header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #0d6efd, #00bfff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+        }
+
+        .pricing-header p {
+            color: #b0b0b0;
+            font-size: 1.1rem;
+            animation: slideUp 0.8s ease-out 0.2s both;
+        }
+
+        /* Pricing Card Styling */
+        .pricing-card {
+            background: rgba(20, 20, 40, 0.8);
+            border: 2px solid rgba(13, 110, 253, 0.3);
+            border-radius: 15px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: fadeUp 0.8s ease-out forwards;
+            opacity: 0;
+            overflow: hidden;
+        }
+
+        .pricing-card:nth-child(1) { animation-delay: 0.3s; }
+        .pricing-card:nth-child(2) { animation-delay: 0.4s; }
+        .pricing-card:nth-child(3) { animation-delay: 0.5s; }
+
+        .pricing-card:hover {
+            transform: translateY(-20px) scale(1.02);
+            border-color: #0d6efd;
+            box-shadow: 0 25px 50px rgba(13, 110, 253, 0.3);
+        }
+
+        .pricing-card:hover .card-header {
+            background: linear-gradient(135deg, #0d6efd, #00bfff) !important;
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, #0d6efd 0%, #003366 100%) !important;
+            border: none;
+            padding: 25px !important;
+            transition: all 0.3s ease;
+        }
+
+        .card-header h4 {
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+
+        .card-body {
+            padding: 30px;
+            background: rgba(10, 14, 39, 0.5);
+        }
+
+        .pricing-card-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #00bfff;
+            margin-bottom: 10px;
+        }
+
+        .pricing-card-title small {
+            color: #b0b0b0;
+            font-size: 0.6em;
+        }
+
+        .list-unstyled li {
+            color: #d0d0d0;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(13, 110, 253, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .list-unstyled li:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-card:hover .list-unstyled li {
+            color: #fff;
+            padding-left: 10px;
+        }
+
+        .btn-outline-primary, .btn-primary {
+            border-radius: 10px;
+            font-weight: 600;
+            padding: 12px 25px;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            border: 2px solid #0d6efd;
+        }
+
+        .btn-outline-primary {
+            background: transparent;
+            color: #0d6efd;
+        }
+
+        .btn-outline-primary:hover {
+            background: #0d6efd;
+            color: #fff;
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(13, 110, 253, 0.3);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #0d6efd, #00bfff);
+            border-color: transparent;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #00bfff, #0d6efd);
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(13, 110, 253, 0.3);
+        }
+
+        /* Footer Animations */
+        footer {
+            animation: slideUp 0.8s ease-out;
+        }
+
+        footer .col-md-4 {
+            animation: slideUp 0.8s ease-out;
+        }
+
+        footer .col-md-4:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        footer .col-md-4:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .footer-link {
+            transition: all 0.3s ease;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-link:hover {
+            color: #0d6efd !important;
+            text-shadow: 0 0 10px rgba(13, 110, 253, 0.5);
+            transform: translateX(5px);
+        }
+
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(13, 110, 253, 0.1);
+            transition: all 0.3s ease;
+            animation: fadeUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .social-icon:nth-child(1) { animation-delay: 0.3s; }
+        .social-icon:nth-child(2) { animation-delay: 0.4s; }
+        .social-icon:nth-child(3) { animation-delay: 0.5s; }
+        .social-icon:nth-child(4) { animation-delay: 0.6s; }
+
+        .social-icon:hover {
+            background: #0d6efd;
+            transform: scale(1.2) rotate(10deg);
+            box-shadow: 0 5px 20px rgba(13, 110, 253, 0.4);
+        }
+
+        footer .nav-link {
+            transition: all 0.3s ease;
+        }
+
+        footer .nav-link:hover {
+            color: #0d6efd !important;
+            transform: translateX(8px);
+        }
+
+        .footer-title {
+            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 8px;
+        }
+
+        .footer-title:hover {
+            border-bottom-color: #0d6efd;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg fixed-top" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">🚀 The Innovation world!</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="#navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/index.html">🏠 Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/Services.html">💼 Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/subscription.html">📱 Subscription</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/Contact Us.html">📧 Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section">
+        <div class="container-fluid">
+            <div class="pricing-header">
+                <h1>💳 Subscription Plans</h1>
+                <p>Choose the perfect plan for your needs and start transforming your experience today.</p>
+            </div>
+
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                <div class="col">
+                    <div class="card pricing-card">
+                        <div class="card-header text-center">
+                            <h4 class="my-0">🆓 Free</h4>
+                        </div>
+                        <div class="card-body text-center">
+                            <h1 class="card-title pricing-card-title">$0<small>/mo</small></h1>
+                            <ul class="list-unstyled mt-4 mb-4">
+                                <li>✓ Download unlimited content</li>
+                                <li>✓ 1000GB of cloud storage</li>
+                                <li>✓ Protected access to premium content</li>
+                                <li>✓ Email support</li>
+                            </ul>
+                            <button type="button" class="w-100 btn btn-outline-primary btn-lg">Sign up for free</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card pricing-card">
+                        <div class="card-header text-center">
+                            <h4 class="my-0">⭐ Pro</h4>
+                        </div>
+                        <div class="card-body text-center">
+                            <h1 class="card-title pricing-card-title">$15<small>/mo</small></h1>
+                            <ul class="list-unstyled mt-4 mb-4">
+                                <li>✓ Download unlimited content</li>
+                                <li>✓ 1000 GB of storage</li>
+                                <li>✓ Priority email support</li>
+                                <li>✓ Help center access</li>
+                            </ul>
+                            <button type="button" class="w-100 btn btn-primary btn-lg">Get started</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card pricing-card">
+                        <div class="card-header text-center">
+                            <h4 class="my-0">👑 Enterprise</h4>
+                        </div>
+                        <div class="card-body text-center">
+                            <h1 class="card-title pricing-card-title">$29<small>/mo</small></h1>
+                            <ul class="list-unstyled mt-4 mb-4">
+                                <li>✓ Download unlimited content</li>
+                                <li>✓ Unlimited GB of storage</li>
+                                <li>✓ Phone and email support</li>
+                                <li>✓ Premium help center access</li>
+                            </ul>
+                            <button type="button" class="w-100 btn btn-primary btn-lg">Contact us</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-5 mt-5" style="background: linear-gradient(135deg, #0a0e27 0%, #1a1a2e 50%, #0f3460 100%); border-top: 4px solid #0d6efd; box-shadow: 0 -5px 30px rgba(13, 110, 253, 0.2);">
+        <div class="container-fluid">
+            <div class="row mb-4">
+                <div class="col-md-4 text-center mb-4">
+                    <h5 class="text-primary fw-bold mb-3 footer-title">🚀 The Innovation World</h5>
+                    <p class="text-light" style="font-size: 0.95rem; line-height: 1.6;">Transforming technology for a better future. Leading the way in innovation and digital transformation.</p>
+                </div>
+                <div class="col-md-4 text-center mb-4">
+                    <h6 class="text-primary fw-bold mb-3 footer-title">⚡ Quick Links</h6>
+                    <ul class="nav justify-content-center flex-column">
+                        <li class="nav-item"><a href="/" class="nav-link px-2 text-light footer-link">🏠 Home</a></li>
+                        <li class="nav-item"><a href="/Services.html" class="nav-link px-2 text-light footer-link">💼 Services</a></li>
+                        <li class="nav-item"><a href="/subscription.html" class="nav-link px-2 text-light footer-link">📱 Subscription</a></li>
+                        <li class="nav-item"><a href="/Contact Us.html" class="nav-link px-2 text-light footer-link">📧 Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 text-center mb-4">
+                    <h6 class="text-primary fw-bold mb-3 footer-title">🌐 Follow Us</h6>
+                    <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+                        <a href="#" class="social-icon text-light text-decoration-none" title="Facebook">f</a>
+                        <a href="#" class="social-icon text-light text-decoration-none" title="Twitter">𝕏</a>
+                        <a href="#" class="social-icon text-light text-decoration-none" title="LinkedIn">in</a>
+                        <a href="#" class="social-icon text-light text-decoration-none" title="Instagram">ig</a>
+                    </div>
+                </div>
+            </div>
+            <hr class="border-secondary opacity-50">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="text-light mb-0" style="font-size: 0.9rem;">© 2025 The Innovation World. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0">
+                        <a href="#" class="text-primary text-decoration-none footer-link me-3">Privacy Policy</a>
+                        <a href="#" class="text-primary text-decoration-none footer-link">Terms of Service</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

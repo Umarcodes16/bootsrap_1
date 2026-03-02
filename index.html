@@ -1,0 +1,617 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Coders World</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        .carousel-inner {
+            height: 100vh;
+        }
+        .carousel-inner img {
+            opacity: 0.5;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carousel-caption {
+            font-size:30px;
+            text-align: center;
+            top: 50%;
+            bottom: auto;
+            transform: translateY(-50%);
+        }
+        .carousel-caption h5,
+        .carousel-caption p {
+            text-align: center;
+            margin: 0 auto;
+            max-width: 80%;
+        }
+
+        /* Navbar styling and animations */
+        .navbar {
+            animation: slideDown 0.6s ease-out;
+            background: linear-gradient(135deg, rgba(13, 20, 50, 0.95) 0%, rgba(10, 14, 39, 0.95) 100%) !important;
+            border-bottom: 2px solid rgba(13, 110, 253, 0.3);
+            box-shadow: 0 5px 20px rgba(13, 110, 253, 0.1);
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #0d6efd, #00bfff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-style: italic;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand:hover {
+            transform: scale(1.05);
+            text-shadow: 0 0 20px rgba(13, 110, 253, 0.5);
+        }
+
+        .navbar-nav .nav-link {
+            color: #b0b0b0 !important;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 10px 15px !important;
+            border-radius: 8px;
+            margin: 0 5px;
+        }
+
+        .navbar-nav .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #0d6efd, #00bfff);
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #00bfff !important;
+            background: rgba(13, 110, 253, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .navbar-nav .nav-link:hover::before {
+            width: 100%;
+        }
+
+        .navbar-nav .nav-link.active {
+            color: #0d6efd !important;
+            background: rgba(13, 110, 253, 0.15);
+        }
+
+        .navbar-toggler {
+            border: 2px solid #0d6efd;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: 0 0 15px rgba(13, 110, 253, 0.5);
+        }
+        /* responsive navbar tweaks */
+        @media (max-width: 992px) {
+            .navbar-nav {
+                text-align: center;
+            }
+            .navbar-nav .nav-link {
+                padding: 8px 12px !important;
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar-brand {
+                font-size: 1.2rem;
+            }
+            .navbar-nav .nav-link {
+                padding: 6px 8px !important;
+                font-size: 0.9rem;
+            }
+            .navbar-toggler {
+                border-color: #00bfff;
+            }
+            .navbar-toggler-icon {
+                filter: invert(1);
+            }
+        }
+
+        /* additional responsive adjustments */
+        @media (max-width: 768px) {
+            .carousel-caption {
+                font-size: 1.5rem;
+            }
+            .card-img-top {
+                height: 200px;
+            }
+            .card-body {
+                padding: 20px;
+            }
+            .card-title {
+                font-size: 1.2rem;
+            }
+            .card-text {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .carousel-inner {
+                height: 50vh;
+            }
+            .carousel-caption {
+                font-size: 1.2rem;
+            }
+            .card-img-top {
+                height: 150px;
+            }
+            .navbar-brand {
+                font-size: 1rem;
+            }
+            h1.text-center {
+                font-size: 1.5rem;
+            }
+            .card {
+                margin: 0 auto;
+            }
+        }
+        /* Footer Animations */
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        footer {
+            animation: slideUp 0.8s ease-out;
+        }
+
+        footer .col-md-4 {
+            animation: slideUp 0.8s ease-out;
+        }
+
+        footer .col-md-4:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        footer .col-md-4:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .footer-link {
+            transition: all 0.3s ease;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-link:hover {
+            color: #0d6efd !important;
+            text-shadow: 0 0 10px rgba(13, 110, 253, 0.5);
+            transform: translateX(5px);
+        }
+
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(13, 110, 253, 0.1);
+            transition: all 0.3s ease;
+            animation: fadeIn 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .social-icon:nth-child(1) {
+            animation-delay: 0.3s;
+        }
+
+        .social-icon:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .social-icon:nth-child(3) {
+            animation-delay: 0.5s;
+        }
+
+        .social-icon:nth-child(4) {
+            animation-delay: 0.6s;
+        }
+
+        .social-icon:hover {
+            background: #0d6efd;
+            transform: scale(1.2) rotate(10deg);
+            box-shadow: 0 5px 20px rgba(13, 110, 253, 0.4);
+        }
+
+        footer .nav-link {
+            transition: all 0.3s ease;
+        }
+
+        footer .nav-link:hover {
+            color: #0d6efd !important;
+            transform: translateX(8px);
+        }
+
+        .footer-title {
+            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 8px;
+        }
+
+        .footer-title:hover {
+            border-bottom-color: #0d6efd;
+        }
+
+        /* Card Animations */
+        @keyframes cardFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes cardFloat {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes cardGlow {
+            0% {
+                box-shadow: 0 5px 15px rgba(13, 110, 253, 0.3);
+            }
+
+            50% {
+                box-shadow: 0 10px 30px rgba(13, 110, 253, 0.6);
+            }
+
+            100% {
+                box-shadow: 0 5px 15px rgba(13, 110, 253, 0.3);
+            }
+        }
+
+        .card {
+            animation: cardFadeIn 0.6s ease-out backwards;
+            border: 1px solid rgba(13, 110, 253, 0.3);
+            background: rgba(20, 25, 45, 0.8);
+            color: #e0e0e0;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .col:nth-child(1) .card {
+            animation-delay: 0.1s;
+        }
+
+        .col:nth-child(2) .card {
+            animation-delay: 0.2s;
+        }
+
+        .col:nth-child(3) .card {
+            animation-delay: 0.3s;
+        }
+
+        .col:nth-child(4) .card {
+            animation-delay: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-15px) scale(1.02);
+            border-color: #0d6efd;
+            box-shadow: 0 15px 40px rgba(13, 110, 253, 0.4);
+            background: rgba(20, 25, 45, 1);
+        }
+
+        .card-img-top {
+            transition: all 0.5s ease;
+            filter: brightness(0.9);
+            object-fit: cover;
+            height: 250px;
+        }
+
+        .card:hover .card-img-top {
+            filter: brightness(1.1) saturate(1.2);
+            transform: scale(1.1);
+        }
+
+        .card-body {
+            background: linear-gradient(135deg, rgba(20, 25, 45, 0.9) 0%, rgba(15, 52, 96, 0.6) 100%);
+            transition: all 0.4s ease;
+        }
+
+        .card:hover .card-body {
+            background: linear-gradient(135deg, rgba(10, 14, 39, 0.95) 0%, rgba(13, 110, 253, 0.15) 100%);
+        }
+
+        .card-title {
+            font-weight: 700;
+            color: #00bfff;
+            transition: all 0.3s ease;
+            margin-bottom: 15px;
+        }
+
+        .card:hover .card-title {
+            color: #0d6efd;
+            text-shadow: 0 0 10px rgba(13, 110, 253, 0.5);
+            transform: translateX(5px);
+        }
+
+        .card-text {
+            color: #b0b0b0;
+            transition: all 0.3s ease;
+            line-height: 1.6;
+        }
+
+        .card:hover .card-text {
+            color: #d0d0d0;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(13, 110, 253, 0.2), transparent);
+            transition: left 0.6s ease;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .card:hover::before {
+            left: 100%;
+        }
+    </style>
+</head>
+
+<body class="bg-black">
+    <nav class="navbar navbar-expand-lg fixed-top" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">🚀 The Innovation world!</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">🏠 Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/Services.html">💼 Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/subscription.html">📱 Subscription</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/Contact Us.html">📧 Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- navbar creation -->
+    <div class="container-fluid" style="height: 72% !important; width: 100%  !important;">
+
+        <div id="carouselExampleCaptions" class="carousel slide">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="high-tech-futuristic-gaming-virtual-reality-headset.jpg" class=" d-block w-100  "
+                        alt="slide 1">
+                    <div class="carousel-caption  d-md-block">
+                        <h5>Welcome to Technology World</h5>
+                        <p>New Innovations Are Transforming Our World</p>
+                    </div>
+                </div>
+                <div class="carousel-item ">
+                    <img src="ai drone.jpg" class="d-block w-100 " alt="slide 2">
+                    <div class="carousel-caption  d-md-block">
+                        <h5>Welcome to Technology World</h5>
+                        <p>New Innovations Are Transforming Our World</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="ai robot.jpg" class="d-block w-100 " alt="slide 3">
+                    <div class="carousel-caption  ">
+                        <h5 >Welcome to Technology World</h5>
+                        <p>New Innovations Are Transforming Our World</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+    <div class="container">
+        <h1 class="text-center text-light mt-5 mb-4" style="font-weight: 700; text-shadow: 0 0 10px rgba(13, 110, 253, 0.5);">Explore the Latest Tech Innovations</h1>
+    </div>
+    <div class="container mt-5">
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+            <div class="col">
+                <div class="card">
+                    <img src="ring.png" class="card-img-top" alt="AI Smart Ring">
+                    <div class="card-body">
+                        <h5 class="card-title">AI smart ring</h5>
+                        <p class="card-text">AI smart rings are wearable devices that use artificial intelligence to
+                            monitor health metrics, track activity, and provide personalized insights for improved
+                            well-being.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <img src="bike.jpg" class="card-img-top" alt="AI Gadgets">
+                    <div class="card-body">
+                        <h5 class="card-title">Futuristic Bike</h5>
+                        <p class="card-text">Futuristic bikes are advanced transportation systems that incorporate cutting-edge technologies like AI, automation, and sustainable energy sources to provide safer, more efficient, and environmentally friendly travel experiences.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <img src="car.webp" class="card-img-top" alt="6G and ISAC">
+                    <div class="card-body">
+                        <h5 class="card-title">FUTURISTIC CAR</h5>
+                        <p class="card-text">Futuristic cars are advanced vehicles that incorporate cutting-edge technologies like AI, automation, and sustainable energy sources to provide safer, more efficient, and environmentally friendly transportation experiences.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <img src="furniture.avif" class="card-img-top" alt="Tesla Brain Chip">
+                    <div class="card-body">
+                        <h5 class="card-title">Smart Furniture</h5>
+                        <p class="card-text">Smart furniture integrates technology seamlessly into everyday objects, offering enhanced functionality, comfort, and convenience through features like built-in charging ports, adjustable lighting, and automated controls.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section id="footer">
+
+        <footer class="py-5 mt-5"
+            style="background: linear-gradient(135deg, #0a0e27 0%, #1a1a2e 50%, #0f3460 100%); border-top: 4px solid #0d6efd; box-shadow: 0 -5px 30px rgba(13, 110, 253, 0.2);">
+            <div class="container-fluid">
+                <div class="row mb-4">
+                    <div class="col-md-4 text-center mb-4">
+                        <h5 class="text-primary fw-bold mb-3 footer-title">🚀 The Innovation World</h5>
+                        <p class="text-light" style="font-size: 0.95rem; line-height: 1.6;">Transforming technology for
+                            a better future. Leading the way in innovation and digital transformation.</p>
+                    </div>
+                    <div class="col-md-4 text-center mb-4">
+                        <h6 class="text-primary fw-bold mb-3 footer-title">⚡ Quick Links</h6>
+                        <ul class="nav justify-content-center flex-column">
+                            <li class="nav-item"><a href="#" class="nav-link px-2 text-light footer-link">🏠 Home</a>
+                            </li>
+                            <li class="nav-item"><a href="/Services.html"
+                                    class="nav-link px-2 text-light footer-link">💼 Services</a></li>
+                            <li class="nav-item"><a href="/subscription.html"
+                                    class="nav-link px-2 text-light footer-link">📱 Subscription</a></li>
+                            <li class="nav-item"><a href="/Contact Us.html"
+                                    class="nav-link px-2 text-light footer-link">📧 Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4 text-center mb-4">
+                        <h6 class="text-primary fw-bold mb-3 footer-title">🌐 Follow Us</h6>
+                        <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+                            <a href="#" class="social-icon text-light text-decoration-none" title="Facebook">
+                                f
+                            </a>
+                            <a href="#" class="social-icon text-light text-decoration-none" title="Twitter">
+                                𝕏
+                            </a>
+                            <a href="#" class="social-icon text-light text-decoration-none" title="LinkedIn">
+                                in
+                            </a>
+                            <a href="#" class="social-icon text-light text-decoration-none" title="Instagram">
+                                ig
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <hr class="border-secondary opacity-50">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start">
+                        <p class="text-light mb-0" style="font-size: 0.9rem;">© 2025 The Innovation World. All rights
+                            reserved.</p>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <p class="mb-0">
+                            <a href="#" class="text-primary text-decoration-none footer-link me-3">Privacy Policy</a>
+                            <a href="#" class="text-primary text-decoration-none footer-link">Terms of Service</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
+    </section>
+
+</body>
+
+</html>
